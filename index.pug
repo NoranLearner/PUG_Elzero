@@ -1,0 +1,79 @@
+include includes\myvars.pug
+include includes\mymixins.pug
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='description',content='pug project')
+    block pageTitle
+      title My Index Page
+    include includes\styles.pug
+  body
+    block pageInfo
+      div index page
+    block pageContent
+      div(class='main_container', id='main')
+      +feature('Cheap Price')
+      +feature('Fast Support')
+      +feature('Clean Code')
+      h2(class='main_title') My Skills
+      //first 
+        start my skills
+      ul(class='main_list')
+        li PHP #{themeName .toUpperCase()}
+        li MySql #{themeTag}
+        li Sass !{themeTag}
+        li PugJs #{'#{osama}'}
+        li html \#{Ahmed}
+      +skilllist
+      // This is For Loop
+      ul
+        - for (var x = 0; x <= 20; x++)
+        li #{x}
+      //This is while loop
+      -var z = 0
+      ul
+        while z < 20 
+        li= z++
+      //This is Each loop
+      - var myArray = ['HTML', 'css', 'Js', 'pug', 'sass']
+      each val , index in myArray
+        div= index + ' : ' + val
+        p= val
+      else
+        div There is no value
+      +skilllist
+      div(class='parent') parent div
+        div(class='child ' + className) child div
+      div= 'This <strong>tag</strong> will not appear'
+      div!= 'This <strong>tag</strong> will not appear'
+      //- end my skills
+      p My name is osama and i love <b>PugJs</b>
+      p.main_paragraph I love <b>PugJs</b> and <b>sass</b>
+      p.inter This is Interpolation #[b(class='osama') Test] after element
+      p#main
+        | I love
+        b PugJs
+        |  and 
+        b sass
+      |
+      |
+      . 
+        This text belong to first div in #{themeName}
+      div: a This is link
+      form
+      h2.contact_title Contact Me
+      input(class='f-c' , type='text' , name='user' , style='background-color:red;color:white;')
+      input(class='f-c' , type='email' , name='email')
+      input(class='f-c' , type='text' , name='subject')
+      button(style='background-color:red;color:white;') Send
+      button(style={'background-color':'green','color':'black'}) Reset
+      case friends
+        when 0
+          p you have no friends
+        when 1
+          p you have a friend
+        default
+          p you have #{friends} friends
+    include includes\scripts.pug
+
